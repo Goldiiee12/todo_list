@@ -1,51 +1,64 @@
-// path: /src/domFunctions.js
-// Handles all DOM updates
-
 import AppLogic from './appLogic';
 
-const DOMFunctions = (() => {
-    const projectListElement = document.getElementById('project-list');
-    const todosDisplayElement = document.getElementById('todos-display');
+const DOMFunctions = {
+  renderProjects(projects, selectProjectCallback) {
+    const projectList = document.getElementById('project-list');
+    projectList.innerHTML = ''; // Clear the list first
 
-    const renderProjects = (projects) => {
-        projectListElement.innerHTML = ''; // Clear the project list
-        projects.forEach(project => {
-            const projectElement = document.createElement('div');
-            projectElement.textContent = project.name;
-            projectElement.classList.add('project');
-            projectElement.addEventListener('click', () => renderTodos(project.todos));
-            projectListElement.appendChild(projectElement);
-        });
-    };
+    projects.forEach(project => {
+      const projectElement = document.createElement('div');
+      projectElement.textContent = project.name;
+      projectElement.classList.add('project');
+      projectElement.addEventListener('click', () => {
+        // Use the callback to handle project selection
+        selectProjectCallback(project.name);
+      });
+      projectList.appendChild(projectElement);
+    });
+  },
 
-    const renderTodos = (todos) => {
-        todosDisplayElement.innerHTML = ''; // Clear the todos display
-        todos.forEach(todo => {
-            const todoElement = document.createElement('div');
-            todoElement.classList.add('todo');
-            
-            // Add title, due date, priority, etc.
-            todoElement.innerHTML = `
-                <h3>${todo.title}</h3>
-                <p>Due: ${todo.dueDate}</p>
-                <p>Priority: ${todo.priority}</p>
-                <button class="edit-todo">Edit</button>
-                <button class="delete-todo">Delete</button>
-            `;
+  renderTodos(project) {
+    const todosDisplay = document.getElementById('todos-display');
+    todosDisplay.innerHTML = ''; // Clear the todos display
 
-            // Attach event listeners for edit and delete buttons
-            todoElement.querySelector('.edit-todo').addEventListener('click', () => {/* Edit logic */});
-            todoElement.querySelector('.delete-todo').addEventListener('click', () => {
-                AppLogic.removeTodoFromProject(/* project name */ todo.title);
-                renderTodos(/* current project todos */);
-            });
+    project.todos.forEach(todo => {
+      const todoElement = document.createElement('div');
+      todoElement.textContent = `${todo.title} - Due: ${todo.dueDate} - Priority: ${todo.priority}`;
+      todoElement.classList.add('todo');
 
-            todosDisplayElement.appendChild(todoElement);
-        });
-    };
+      // Create and append edit button
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () => {
+        // Code to handle todo editing
+        const newTitle = prompt('Edit the title', todo.title); // Simple prompt for demo
+        if (newTitle) {
+          AppLogic.editTodo(project.name, todo.id, { title: newTitle });
+          DOMFunctions.renderTodos(AppLogic.getProjectByName(project.name));
+        }
+      });
+      todoElement.appendChild(editButton);
 
-    return { renderProjects, renderTodos };
-})();
+      // Create and append delete button
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        AppLogic.deleteTodo(project.name, todo.id);
+        DOMFunctions.renderTodos(AppLogic.getProjectByName(project.name)); // Re-render the todos after deletion
+      });
+      todoElement.appendChild(deleteButton);
+
+      // Append the todo element with buttons to the display container
+      todosDisplay.appendChild(todoElement);
+    });
+  },
+
+  // Additional functions for adding, editing, and deleting todos, etc.
+};
 
 export default DOMFunctions;
 
+  
+  
+  
+  

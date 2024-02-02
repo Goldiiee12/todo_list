@@ -1,40 +1,57 @@
-// path: /src/appLogic.js
-// This module contains the core application logic
-
+// Import the necessary modules.
 import Project from './Project';
 import Todo from './Todo';
 import Storage from './storage';
 
+// App logic module.
 const AppLogic = (() => {
-    const projects = Storage.loadProjects();
+  let projects = Storage.loadProjects() || [new Project('Default')];
 
-    const addProject = (name) => {
-        const newProject = new Project(name);
-        projects.push(newProject);
+  const getProjects = () => projects;
+  
+  const getProjectByName = (name) => projects.find(project => project.name === name);
+
+  const addProject = (name) => {
+    const newProject = new Project(name);
+    projects.push(newProject);
+    Storage.saveProjects(projects);
+    return newProject;
+  };
+
+  const addTodo = (projectName, title, description, dueDate, priority) => {
+    const project = getProjectByName(projectName);
+    if (project) {
+      const newTodo = new Todo(title, description, dueDate, priority);
+      project.addTodo(newTodo);
+      Storage.saveProjects(projects);
+      return newTodo;
+    }
+    return null;
+  };
+
+  const editTodo = (projectName, todoId, updatedData) => {
+    const project = getProjectByName(projectName);
+    if (project) {
+      const todo = project.todos.find(todo => todo.id === todoId);
+      if (todo) {
+        Object.assign(todo, updatedData);
         Storage.saveProjects(projects);
-    };
+      }
+    }
+  };
+  
+  const deleteTodo = (projectName, todoId) => {
+    const project = getProjectByName(projectName);
+    if (project) {
+      project.todos = project.todos.filter(todo => todo.id !== todoId);
+      Storage.saveProjects(projects);
+    }
+  };
 
-    const addTodoToProject = (projectName, todoData) => {
-        const project = projects.find(p => p.name === projectName);
-        if (project) {
-            const { title, description, dueDate, priority } = todoData;
-            const newTodo = new Todo(title, description, dueDate, priority);
-            project.addTodo(newTodo);
-            Storage.saveProjects(projects);
-        }
-    };
-
-    const removeTodoFromProject = (projectName, todoTitle) => {
-        const project = projects.find(p => p.name === projectName);
-        if (project) {
-            project.removeTodo(todoTitle);
-            Storage.saveProjects(projects);
-        }
-    };
-
-    // More logic for editing todos, toggling completion, etc.
-
-    return { addProject, addTodoToProject, removeTodoFromProject };
+  // Export the public methods.
+  return { getProjects, addProject, addTodo, getProjectByName, editTodo, deleteTodo };
 })();
 
 export default AppLogic;
+
+

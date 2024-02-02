@@ -4,16 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Todo List Application</h1>
     </header>
     <main>
+        <button id="add-project-btn">Add Project</button> <!-- Button to add a new project -->
         <section id="project-list">
             <!-- Project list will be dynamically generated here -->
         </section>
+
+        <!-- Form to add a new todo -->
+        <form id="new-todo-form">
+            <input type="text" id="todo-title" placeholder="Title" required>
+            <input type="text" id="todo-description" placeholder="Description">
+            <input type="date" id="todo-due-date" required>
+            <select id="todo-priority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <button type="submit">Add Todo</button>
+        </form>
+
         <section id="todos-display">
             <!-- Todos for the selected project will be shown here -->
         </section>
@@ -21,6 +35,6 @@
     <footer>
         <p>Todo List App © Caleb 2024</p>
     </footer>
-    <script src="main.js"></script>
+    <!-- No need to manually add the script here, HtmlWebpackPlugin will do it -->
 </body>
 </html>

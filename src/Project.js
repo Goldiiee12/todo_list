@@ -1,7 +1,4 @@
-// path: /src/Project.js
-// Manages a collection of Todo items
-
-class Project {
+export default class Project {
   constructor(name) {
     this.name = name;
     this.todos = [];
@@ -11,11 +8,9 @@ class Project {
     this.todos.push(todo);
   }
 
-  removeTodo(todoTitle) {
-    this.todos = this.todos.filter(todo => todo.title !== todoTitle);
+  removeTodo(todoId) {
+    this.todos = this.todos.filter(todo => todo.id !== todoId);
   }
 
-  // More methods will be added here for editing and retrieving todos
+  // Additional methods such as finding a todo, updating its status, etc.
 }
-
-export default Project;
