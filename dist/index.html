@@ -1,1 +1,33 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Todo List</title><script defer="defer" src="bundle.js"></script></head><body><header><h1>Todo List Application</h1></header><main><button id="add-project-btn">Add Project</button><section id="project-list"></section><form id="new-todo-form"><input id="todo-title" placeholder="Title" required> <input id="todo-description" placeholder="Description"> <input type="date" id="todo-due-date" required> <select id="todo-priority"><option value="High">High</option><option value="Medium" selected="selected">Medium</option><option value="Low">Low</option></select> <button type="submit">Add Todo</button></form><section id="todos-display"></section></main><footer><p>Todo List App © Caleb 2024</p></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="main.css">
+<script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+<body>
+    <header>
+        <h1>Todo List</h1>
+    </header>
+    <main>
+        <aside>
+            <!-- Section for projects -->
+            <div id="projects-list">
+                <!-- Projects will be listed here -->
+            </div>
+            <button id="new-project-btn">New Project</button>
+        </aside>
+        <section>
+            <!-- Section for todos -->
+            <div id="todos-list">
+                <!-- Todos will be listed here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Todo List App</p>
+    </footer>
+    <script src="bundle.js"></script>
+</body>
+</html>

@@ -4,37 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
-        <h1>Todo List Application</h1>
+        <h1>Todo List</h1>
     </header>
     <main>
-        <button id="add-project-btn">Add Project</button> <!-- Button to add a new project -->
-        <section id="project-list">
-            <!-- Project list will be dynamically generated here -->
-        </section>
-
-        <!-- Form to add a new todo -->
-        <form id="new-todo-form">
-            <input type="text" id="todo-title" placeholder="Title" required>
-            <input type="text" id="todo-description" placeholder="Description">
-            <input type="date" id="todo-due-date" required>
-            <select id="todo-priority">
-                <option value="High">High</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="Low">Low</option>
-            </select>
-            <button type="submit">Add Todo</button>
-        </form>
-
-        <section id="todos-display">
-            <!-- Todos for the selected project will be shown here -->
+        <aside>
+            <!-- Section for projects -->
+            <div id="projects-list">
+                <!-- Projects will be listed here -->
+            </div>
+            <button id="new-project-btn">New Project</button>
+        </aside>
+        <section>
+            <!-- Section for todos -->
+            <div id="todos-list">
+                <!-- Todos will be listed here -->
+            </div>
         </section>
     </main>
     <footer>
-        <p>Todo List App © Caleb 2024</p>
+        <p>Todo List App</p>
     </footer>
-    <!-- No need to manually add the script here, HtmlWebpackPlugin will do it -->
+    <script src="bundle.js"></script>
 </body>
 </html>
