@@ -5,7 +5,14 @@ export default class Project {
   }
 
   addTodo(todo) {
-    this.todos.push(todo);
+    // Check if the todo with the same ID already exists
+    const exists = this.todos.some(existingTodo => existingTodo.id === todo.id);
+    if (!exists) {
+      this.todos.push(todo);
+    } else {
+      // Handle the case where a todo with the same ID exists
+      console.error('A todo with this ID already exists.');
+    }
   }
 
   removeTodo(todoId) {
