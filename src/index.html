@@ -3,31 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>WhatToDo - Your Task Manager</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header>
-        <h1>Todo List</h1>
-    </header>
-    <main>
-        <aside>
-            <!-- Section for projects -->
-            <div id="projects-list">
-                <!-- Projects will be listed here -->
+    <div class="app-container">
+        <!-- Header starts here -->
+        <header class="app-header">
+            <div class="header-logo">
+                <img src="assets/logo.svg" alt="WhatToDo Logo"> <!-- Update with your logo path -->
             </div>
-            <button id="new-project-btn">New Project</button>
+            <nav class="header-nav">
+                <!-- Place your navigation items here if any -->
+                <button id="mode-toggle" class="mode-toggle">Dark Mode</button> <!-- Example button -->
+            </nav>
+        </header>
+        <aside class="sidebar">
+            <nav class="navigation">
+                <ul class="nav-list">
+                    <li>All Tasks</li>
+                    <li>Today</li>
+                    <li>Next 7 Days</li>
+                    <li>Important</li>
+                </ul>
+            </nav>
+            <div class="project-section">
+                <p class="project-title">Projects</p>
+                <div id="projects-list">
+                    <!-- Projects will be listed here -->
+                </div>
+                <button id="new-project-btn" class="add-project-btn">Add Project</button>
+            </div>
         </aside>
-        <section>
-            <!-- Section for todos -->
-            <div id="todos-list">
+        <main class="content">
+            <div id="todo-container">
                 <!-- Todos will be listed here -->
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>Todo List App</p>
-    </footer>
-    <script src="bundle.js"></script>
+        </main>
+    </div>
 </body>
 </html>
+
+
+
+
+
+

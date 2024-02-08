@@ -8,7 +8,7 @@ Check out live preview here:
 
 # Functionality
 
-add projects ✅
+add projects 
 
 rename projects 
 
@@ -16,13 +16,13 @@ change order of projects using drag and drop feature
 
 temporarily hide side panel
 
-add tasks into your projects (title, details, due-date) ✅
+add tasks into your projects (title, details, due-date) 
 
 mark or unmark your tasks as completed or important
 
-edit you tasks (title, details, due-date) ✅
+edit you tasks (title, details, due-date) 
 
-delete you tasks ✅
+delete you tasks 
 
 display all tasks
 
@@ -32,7 +32,7 @@ display all tasks that is dued until next week
 
 display all tasks that are marked important
 
-save all you projects and task to localStorage ✅
+save all you projects and task to localStorage 
 
 light & Dark mode
 
@@ -53,7 +53,7 @@ User Interface Requirements:
 
 Ability to view all projects.
 
-Ability to view all todos within each project, displaying at least the title and due date. Use color coding to indicate different priorities.
+Ability to view all todos within each project, displaying at least the title, description, due date and priority. Use color coding to indicate different priorities.
 
 Functionality to expand a todo item to view and edit its details.
 
@@ -68,5 +68,5 @@ Data Persistence: Integrate the Web Storage API to add persistence to the app, e
 Error Handling and Debugging:
 
 Ensure the app does not crash if there's no data to retrieve from localStorage.
-Use browser DevTools, particularly the Application tab, to inspect localStorage data for debugging.
+
 Remember that localStorage deals with JSON data, which cannot include functions directly. Plan for how to reattach methods to your objects after retrieving them from localStorage.
