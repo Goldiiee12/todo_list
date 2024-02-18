@@ -1,4 +1,4 @@
-# Restaurant-Page
+# to-do list
 
 This is a Basic Todo-List
 
@@ -35,11 +35,6 @@ display all tasks that are marked important
 save all you projects and task to localStorage 
 
 light & Dark mode
-
-
-# To Do for later
-
-Need to be able to edit and delete todos as that is bugged
 
 # Project Objectives
 
